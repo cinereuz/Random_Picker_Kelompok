@@ -1,0 +1,82 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Picker Group</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+      }
+
+      select,
+      input[type='number'],
+      input[type='submit'] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      input[type='submit'] {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+      }
+
+      input[type='submit']:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bagi Kelompok</h1>
+      <form method="POST" action="/">
+        <label for="class">Pilih Kelas:</label>
+        <select name="class" id="class">
+          {% for class_name in classes %}
+          <option value="{{ class_name }}">{{ class_name }}</option>
+          {% endfor %}
+        </select>
+
+        <label for="division_type">Pilih Jenis Pembagian:</label>
+        <select name="division_type" id="division_type">
+          <option value="mixed">Campuran</option>
+          <option value="male">Laki-laki</option>
+          <option value="female">Perempuan</option>
+        </select>
+
+        <label for="group_size">Jumlah Kelompok:</label>
+        <input type="number" name="group_size" id="group_size" min="1" />
+
+        <input type="submit" value="Generate Groups" />
+      </form>
+    </div>
+  </body>
+</html>
